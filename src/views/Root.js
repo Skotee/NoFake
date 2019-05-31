@@ -4,7 +4,7 @@ import MainTemplate from 'templates/MainTemplate';
 
 const Test = styled.h1`
   text-decoration: underline;
-  color: ${({ theme }) => theme.red};
+  color: ${props => props.theme.red};
 `;
 
 const StyledTest = styled(Test)`
