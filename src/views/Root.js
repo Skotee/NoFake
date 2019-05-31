@@ -1,6 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainTemplate from 'templates/MainTemplate';
+import { createStore } from 'redux';
+import ArticlesList from '../components/atoms/ArticlesList';
+
+const initialArticles = {
+  articles: [
+    'art1', 'art2'
+  ]
+}
+
+
+
+function articles(state = initialArticles, action) {
+  switch (action.type) {
+    // case 'INCREMENT':
+    //   return state + 1
+    // case 'DECREMENT':
+    //   return state - 1
+    default:
+      return state
+  }
+}
+
+const store = createStore(articles)
+window.store = store;
 
 const Test = styled.h1`
   text-decoration: underline;
@@ -17,6 +41,7 @@ const StyledTest = styled(Test)`
 const Root = () => {
   return (
     <MainTemplate>
+      <ArticlesList></ArticlesList>
       <div>
         <h1>Joł, siema!</h1>
         <Test>Elo, tu Styled Components</Test>
