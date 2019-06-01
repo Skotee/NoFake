@@ -18,7 +18,6 @@ const NumberWrapper = styled.div`
   width: 70px;
   box-shadow: 1px 1px 60px white;
   /* border: 6px solid ${({ theme }) => theme.grey}; */
-  ${props => console.log(props.big)}
 
   ${({ big }) =>
     big &&

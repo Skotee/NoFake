@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card';
 import { connect } from 'react-redux';
-import { fetchArticles } from 'actions';
+import { fetchArticles, checkRisk as checkRiskAction } from 'actions';
 
 class HighFake extends Component {
   componentDidMount() {
-    this.props.getArticles();
+    this.props.getArticles().then(() => this.props.checkRisk());
   }
 
   render() {
@@ -35,6 +35,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   getArticles: fetchArticles,
+  checkRisk: checkRiskAction,
 };
 export default connect(
   mapStateToProps,
