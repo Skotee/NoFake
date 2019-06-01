@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card';
-// chwilo details template
-import DetailsTemplate from 'templates/DetailsTemplate';
 import { connect } from 'react-redux';
 import { fetchArticles } from 'actions';
 
@@ -31,10 +28,6 @@ class HighFake extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   data: state.json,
-// });
 
 const mapStateToProps = state => {
   const { json } = state;
