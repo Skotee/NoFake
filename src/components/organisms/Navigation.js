@@ -15,7 +15,8 @@ const Wrapper = styled.div`
   padding: 40px 0 25px;
   height: 100vh;
   width: 150px;
-  background-color: ${({ theme, colorNav }) => theme[colorNav]};
+  /* background-color: ${({ theme, colorNav }) => theme[colorNav]}; */
+  background-color: ${({ theme, colorNav }) => (colorNav ? theme[colorNav] : theme.home)};
   /* background-color: ${({ activeColor, theme }) =>
     activeColor ? theme[activeColor] : theme.note}; */
 
@@ -36,6 +37,7 @@ const StyledLinkList = styled.ul`
 
 const changeColorNav = props => {
   console.log(props);
+
   const activeColor = props.location.pathname.slice(1);
   return activeColor;
 };

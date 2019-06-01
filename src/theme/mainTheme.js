@@ -6,6 +6,8 @@ export const theme = {
   high: '#C82333',
   medium: '#E0A800',
   low: '#218838',
+  details: '#ddd',
+  home: '#ddd',
   regular: 300,
   bold: 600,
   fontSize: {
