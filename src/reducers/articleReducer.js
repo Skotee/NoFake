@@ -1,8 +1,10 @@
 import {
     FETCH_ARTICLES_BEGIN,
     FETCH_ARTICLES_SUCCESS,
-    FETCH_ARTICLES_FAILURE
-} from '../actions/action';
+    FETCH_ARTICLES_FAILURE,
+    REQUEST_POSTS,
+    RECEIVE_POSTS
+} from '../actions';
 
 const initialState = {
     items: [],
@@ -10,7 +12,7 @@ const initialState = {
     error: null
 };
 
-export default function productReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_ARTICLES_BEGIN:
             // Mark the state as "loading" so we can show a spinner or something
@@ -45,6 +47,18 @@ export default function productReducer(state = initialState, action) {
                     items: []
             };
 
+        case REQUEST_POSTS:
+            return {
+                ...state,
+                loading: true
+            };
+
+        case RECEIVE_POSTS:
+            return {
+                ...state,
+                json: action.json,
+                loading: false
+            };
         default:
             // ALWAYS have a default case in a reducer
             return state;
