@@ -121,7 +121,7 @@ export function checkRisk(title = '') {
         type: UPDATE_ARTICLES,
         data: modifiedItems,
       });
-      // console.log('stan lalla: ', modifiedItems);
+      console.log('stan lalla: ', modifiedItems);
     }
   };
 }

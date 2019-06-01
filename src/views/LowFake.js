@@ -32,24 +32,28 @@ class LowFake extends Component {
 
   turnOffRender() {
     this.setState({ render: false });
-    console.log('ok');
+    // console.log('ok');
   }
 
   render() {
     return (
       <GridTemplate>
         {this.props.items &&
-          this.props.items.map(item => (
-            <Card
-              key={item.title}
-              title={item.title}
-              url={item.url}
-              urlToImage={item.urlToImage}
-              content={item.content}
-              likeArticle={this.likeArticle}
-              unlikeArticle={this.unlikeArticle}
-            />
-          ))}
+          this.props.items.map(item => {
+            // console.log(item.urlToImage.lenght);
+            if (!item.urlToImage || !item.description) return null;
+            return (
+              <Card
+                key={item.title}
+                title={item.title}
+                url={item.url}
+                urlToImage={item.urlToImage}
+                content={item.content}
+                likeArticle={this.likeArticle}
+                unlikeArticle={this.unlikeArticle}
+              />
+            );
+          })}
       </GridTemplate>
     );
   }
