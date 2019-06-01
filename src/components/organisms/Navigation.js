@@ -4,7 +4,7 @@ import ButtonIcon from 'components/atoms/ButtonIcon';
 import iconChecked from 'assets/icons/checked.png';
 import iconWarning from 'assets/icons/warning.png';
 import iconError from 'assets/icons/err.png';
-import logo from 'assets/icons/logo.png';
+import logo from 'assets/icons/logov2.png';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { routes } from 'routes';
@@ -30,12 +30,27 @@ const Wrapper = styled.div`
 const StyledName = styled.div`
   font-size: 20px;
   /* background-image: url(${logo}); */
-  background-image: url(${({ logo }) => logo});
+  /* background-image: url(${({ logo }) => logo}); */
   /* background-image: url(${props => props.logo}); */
   /* width: 100px; */
   /* height: 100px; */
 `;
 
+const StyledLogoLink = styled.div`
+  display: block;
+  width: 100px;
+  height: 300px;
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+  background-image: url(${logo});
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 200%;
+  border: none;
+`;
 const StyledLinkList = styled.ul`
   list-style: none;
   margin-top: 15vh;
@@ -53,7 +68,8 @@ const Navigation = props => {
   return (
     <Wrapper colorNav={changeColorNav(props)}>
       {/* <StyledName>Hello</StyledName> */}
-      <StyledName logo={logo}>No Fake</StyledName>
+      {/* <StyledName logo={logo}>No Fake</StyledName> */}
+      <StyledLogoLink />
       <StyledLinkList>
         <li>
           <ButtonIcon as={NavLink} to={routes.lowFake} icon={iconChecked} activeclass="active" />
