@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.5);
   border-radius: 10px;
   overflow: hidden;
-  cursor: pointer;
+  /* cursor: pointer; */
 `;
 
 const StyledImage = styled.div`
@@ -34,12 +34,13 @@ const StyledHeading = styled(Heading)`
   line-height: 20px;
   text-shadow: 4px 4px 6px ${({ theme }) => theme.black};
 
-  color: ${({ theme }) => theme.grey};
+  color: ${({ theme }) => theme.grey};  
   /* border-bottom: 1px solid ${({ theme }) => theme.black}; */
 `;
 
 const StyledParagraph = styled(Paragraph)`
   padding: 10px;
+  cursor: pointer;
 `;
 
 const StyledIconCircle = styled(FaThumbsUp)`
@@ -65,7 +66,15 @@ class Card extends Component {
 
   render() {
     const { redirect } = this.state;
-    const { title, url, urlToImage, content } = this.props;
+    const {
+      title,
+      url,
+      urlToImage,
+      content,
+      likeArticle,
+      unlikeArticle,
+      fakeindicator = 1,
+    } = this.props;
 
     if (redirect) {
       return (
@@ -79,16 +88,18 @@ class Card extends Component {
     }
 
     return (
-      <Wrapper onClick={this.handleClick}>
+      <Wrapper>
         <StyledImage urlToImage={urlToImage}>
           <WrappStyledIcon>
-            <StyledIconCircle />
-            <StyledIconCircle unlike="red" rotate />
+            <StyledIconCircle onClick={() => likeArticle(title)} />
+            <StyledIconCircle onClick={() => unlikeArticle(title)} unlike="red" rotate="true" />
           </WrappStyledIcon>
-          <PieChart />
+          <PieChart title={title} />
           <StyledHeading>{title}</StyledHeading>
         </StyledImage>
-        <StyledParagraph>{content && `${content.slice(0, 100)}...`}</StyledParagraph>
+        <StyledParagraph onClick={this.handleClick}>
+          {content && `${content.slice(0, 100)}...`}
+        </StyledParagraph>
       </Wrapper>
     );
   }

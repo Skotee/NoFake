@@ -36,8 +36,6 @@ const StyledLinkList = styled.ul`
 `;
 
 const changeColorNav = props => {
-  console.log(props);
-
   const activeColor = props.location.pathname.slice(1);
   return activeColor;
 };

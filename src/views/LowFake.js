@@ -2,16 +2,34 @@ import React, { Component } from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card';
 import { connect } from 'react-redux';
-import { fetchArticles } from 'actions';
+import { fetchArticles, checkRisk as checkRiskAction, addVote as addVoteAction } from 'actions';
 
 class LowFake extends Component {
+  state = {
+    like: false,
+    unlike: false,
+    whichArticle: '',
+  };
+
   componentDidMount() {
-    this.props.getArticles();
+    this.props.getArticles().then(() => this.props.checkRisk());
   }
 
-  render() {
-    console.log(this.props.items);
+  componentDidUpdate() {
+    const { like, unlike, whichArticle } = this.state;
+    // this.props.checkRisk(like, unlike, whichArticle);
+    this.props.addVote(like, unlike, whichArticle);
+  }
 
+  likeArticle = whichArticle => {
+    this.setState({ like: true, unlike: false, whichArticle });
+  };
+
+  unlikeArticle = whichArticle => {
+    this.setState({ unlike: true, like: false, whichArticle });
+  };
+
+  render() {
     return (
       <GridTemplate>
         {this.props.items &&
@@ -22,6 +40,8 @@ class LowFake extends Component {
               url={item.url}
               urlToImage={item.urlToImage}
               content={item.content}
+              likeArticle={this.likeArticle}
+              unlikeArticle={this.unlikeArticle}
             />
           ))}
       </GridTemplate>
@@ -35,6 +55,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   getArticles: fetchArticles,
+  // checkRisk: checkRiskAction,
+  checkRisk: (like, unlike, whichArticle) => checkRiskAction(like, unlike, whichArticle),
+  addVote: (like, unlike, whichArticle) => addVoteAction(like, unlike, whichArticle),
 };
 export default connect(
   mapStateToProps,

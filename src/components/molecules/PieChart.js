@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-
-const chartNumber = Math.floor(Math.random() * (100 - 0 + 1));
+import store from 'store/configStore';
 
 const NumberWrapper = styled.div`
   position: absolute;
@@ -71,7 +70,17 @@ const chooseBorderColor = number => {
   return color;
 };
 
-const PieChart = ({ big }) => {
+const PieChart = ({ big, title }) => {
+  // console.log(store.getState().json);
+  const ourArticle = store.getState().json.filter(item => item.title === title);
+
+  // if (ourArticle.fakeindicator === undefined) ourArticle.fakeindicator = 1;
+
+  // const randomNumber = Math.floor(Math.random() * (100 - 0 + 1));
+
+  console.log(ourArticle.fakeindicator);
+  const chartNumber = ourArticle.fakeindicator;
+
   return (
     <>
       <NumberWrapper
