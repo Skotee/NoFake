@@ -43,15 +43,18 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const StyledIconCircle = styled(FaThumbsUp)`
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  padding: 4px;
+  border-radius: 50%;
   color: ${({ unlike }) => unlike || '#28CC45'};
   margin: 10px 10px 0 10px;
   transform: ${({ rotate }) => rotate && 'rotate(180deg)'};
   transition: 0.2s linear;
   &:hover {
     color: ${({ unlike }) => (unlike ? '#D91500' : '#008A4F')};
-    transform: scale(1, 1.2) ${({ rotate }) => rotate && 'rotate(180deg)'};
+    transform: scale(1.2, 1.2) ${({ rotate }) => rotate && 'rotate(180deg)'};
   }
 `;
 const WrappStyledIcon = styled.div`
