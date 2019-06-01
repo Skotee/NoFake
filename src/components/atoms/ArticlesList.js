@@ -8,7 +8,6 @@ let ArticlesList = ({ fetchArticles }) => {
         onClick={ () =>  fetchArticles() } >
         Get news
     </button>)
-    
 };
 
 // class ArticlesList extends React.Component {
