@@ -59,6 +59,7 @@ const Root = () => {
     <Provider store = {store}>
       <MainTemplate>
         <div>
+          console.log(fetchArticles());
         <ArticlesList></ArticlesList>
           <h1>Joł, siema!</h1>
           <Test>Elo, tu Styled Components</Test>

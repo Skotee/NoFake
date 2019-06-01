@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const FETCH_ARTICLES_BEGIN = 'FETCH_ARTICLES_BEGIN';
 export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS';
 export const FETCH_ARTICLES_FAILURE = 'FETCH_ARTICLES_FAILURE';
@@ -36,7 +38,8 @@ export const receivedArticles = json => ({
 export function fetchArticles() {
     return function (dispatch) {
         dispatch(requestArticles());
-        return fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
+        return axios
+            .get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
             .then(
                 response => response.json(),
                 error => console.log('An error occurred.', error),

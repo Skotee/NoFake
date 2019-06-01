@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchArticles } from "../../actions";
+import { fetchArticles } from "actions/index";
 
-let ArticlesList = ({ getArticles }) => (
-    <button 
-        onClick={ () => { getArticles() }} >
+let ArticlesList = ({ fetchArticles }) => {
+    console.log(fetchArticles)
+    return (<button 
+        onClick={ () =>  fetchArticles() } >
         Get news
-    </button>
-);
+    </button>)
+    
+};
 
 // class ArticlesList extends React.Component {
 //   componentDidMount() {
@@ -47,7 +49,7 @@ const mapStateToProps = (state) => ({
     channel: state.channel
 })
 const mapDispatchToProps = {
-    getPosts: fetchArticles
+    getArticles: fetchArticles
 }
 ArticlesList = connect(mapStateToProps, mapDispatchToProps)(ArticlesList)
 export default ArticlesList;
