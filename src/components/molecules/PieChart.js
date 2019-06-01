@@ -72,13 +72,16 @@ const chooseBorderColor = number => {
 
 const PieChart = ({ big, title }) => {
   // console.log(store.getState().json);
-  const ourArticle = store.getState().json.filter(item => item.title === title);
+  const ourArticle = store.getState().json.filter(item => {
+    if (item.title === title) return item;
+  });
 
+  console.log(ourArticle);
   // if (ourArticle.fakeindicator === undefined) ourArticle.fakeindicator = 1;
 
   // const randomNumber = Math.floor(Math.random() * (100 - 0 + 1));
 
-  console.log(ourArticle.fakeindicator);
+  // console.log(ourArticle.fakeindicator);
   const chartNumber = ourArticle.fakeindicator;
 
   return (

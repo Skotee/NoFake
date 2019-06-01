@@ -61,43 +61,63 @@ export function fetchArticles() {
   };
 }
 
-export function checkRisk(title='') {
+export function checkRisk(title = '') {
   return function(dispatch) {
     const items = store.getState().json;
     // const
-    let fakeindicator = 0; //0 to prawda, 100 to fałsz
-    let source = ['nytimes', 'newsday', 'washingpost', 'infowars', 'christiantimes','empirenews'];
-    let catchwords = ['breaking', 'news', 'shooting', 'spreads', 'across', 'diseases', 'epidemy', 'voting', 'election', 'trump', 'final'];
+
+    const source = [
+      'nytimes',
+      'newsday',
+      'washingpost',
+      'infowars',
+      'christiantimes',
+      'empirenews',
+    ];
+    const catchwords = [
+      'breaking',
+      'news',
+      'shooting',
+      'spreads',
+      'across',
+      'diseases',
+      'epidemy',
+      'voting',
+      'election',
+      'trump',
+      'final',
+    ];
     const actualDate = new Date();
     const actualYear = actualDate.getFullYear();
-    let calculateyear = actualYear - items.publishedAt;
+    const calculateyear = actualYear - items.publishedAt;
 
-    if(items != undefined)
-    {
-        const modifiedItems = items.map(item => {
-            if (item.title === title) {
-                item.fakeindicator = 1;
-                item.fakeindicator +=10;
-            }
-            if (actualYear - ((item.publishedAt).slice(0, 4)) >= 2)
-                fakeindicator += 10;
-            if (item.author == 'null')
-                fakeindicator += 10;
-            if (item.description == 'null')
-                fakeindicator += 10;
-            if (catchwords.some(function (v) {
-                return item.description.indexOf(v) >= 0;
-            })) {
-                fakeindicator += 10; // There's at least one substring - catchywords with high risk of fake news from array in description
-            }
-            if (source.some(function (v) {
-                    return item.url.indexOf(v) >= 0;
-                })) {
-                fakeindicator += 10; // There's at least one substring - sources with high risk of fake news from array in url
-            }
-            return item;
-        });
-        console.log('stan lalla: ', modifiedItems);
+    if (items != undefined) {
+      const modifiedItems = items.map(item => {
+        item.fakeindicator = 1; // 1 to prawda, 100 to fałsz
+        if (item.title === title) {
+          item.fakeindicator += 10;
+        }
+        if (actualYear - item.publishedAt.slice(0, 4) >= 2) item.fakeindicator += 10;
+        if (item.author == 'null') item.fakeindicator += 10;
+        if (item.description == 'null') item.fakeindicator += 10;
+        if (
+          catchwords.some(function(v) {
+            return item.description.indexOf(v) >= 0;
+          })
+        ) {
+          item.fakeindicator += 10; // There's at least one substring - catchywords with high risk of fake news from array in description
+        }
+        if (
+          source.some(function(v) {
+            return item.url.indexOf(v) >= 0;
+          })
+        ) {
+          item.fakeindicator += 10; // There's at least one substring - sources with high risk of fake news from array in url
+        }
+        return item;
+      });
+      dispatch(() => updateArticles(modifiedItems));
+      console.log('stan lalla: ', modifiedItems);
     }
   };
 }
@@ -117,7 +137,7 @@ export function addVote(like = false, unlike = false, title = '') {
         return item;
       });
 
-      console.log('stan lalla: ', modifiedItems);
+      // console.log('stan lalla: ', modifiedItems);
       // console.log('propsy: ', like, unlike, title);
       dispatch(() => updateArticles(modifiedItems));
     }
