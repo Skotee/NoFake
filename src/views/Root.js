@@ -11,6 +11,7 @@ import DetailsTemplate from 'templates/DetailsTemplate';
 import Navigation from 'components/organisms/Navigation';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { routes } from 'routes';
+import { Redirect } from 'react-router';
 
 import reducer from '../reducers/articleReducer';
 import HighFake from './HighFake';
