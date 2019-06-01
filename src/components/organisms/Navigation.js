@@ -50,13 +50,13 @@ const Navigation = props => {
 
       <StyledLinkList>
         <li>
-          <ButtonIcon as={NavLink} to={routes.highFake} icon={iconChecked} activeclass="active" />
+          <ButtonIcon as={NavLink} to={routes.lowFake} icon={iconChecked} activeclass="active" />
         </li>
         <li>
           <ButtonIcon as={NavLink} to={routes.mediumFake} icon={iconWarning} activeclass="active" />
         </li>
         <li>
-          <ButtonIcon as={NavLink} to={routes.lowFake} icon={iconError} activeclass="active" />
+          <ButtonIcon as={NavLink} to={routes.highFake} icon={iconError} activeclass="active" />
         </li>
       </StyledLinkList>
     </Wrapper>
