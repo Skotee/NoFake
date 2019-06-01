@@ -9,6 +9,9 @@
     "window": true
   },
   "rules": {
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "func-names": 0,
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": [

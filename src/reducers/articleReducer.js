@@ -4,6 +4,7 @@ import {
   FETCH_ARTICLES_FAILURE,
   REQUEST_ARTICLES,
   RECEIVE_ARTICLES,
+  UPDATE_ARTICLES,
 } from '../actions';
 
 const initialState = {
@@ -58,6 +59,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         json: action.json,
         loading: false,
+      };
+
+    case UPDATE_ARTICLES:
+      return {
+        json: action.data,
       };
     default:
       // ALWAYS have a default case in a reducer

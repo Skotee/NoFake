@@ -51,7 +51,7 @@ const DetailsTemplate = props => {
 
   return (
     <>
-      {redirectOrNot && <Redirect to={routes.highFake} />}
+      {redirectOrNot && <Redirect to={routes.lowFake} />}
       {props.location && (
         <Wrapper>
           <StyledHeading>{props.location.item.title}</StyledHeading>
