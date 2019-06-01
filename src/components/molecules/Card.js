@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
 import PieChart from 'components/molecules/PieChart';
+import { Redirect } from 'react-router-dom';
+import { routes } from 'routes';
 
 const Wrapper = styled.div`
   min-height: 200px;
@@ -11,11 +13,12 @@ const Wrapper = styled.div`
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.5);
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 const StyledImage = styled.div`
   position: relative;
-  background-image: url('https://ocdn.eu/pulscms-transforms/1/AotktkqTURBXy80Y2FiZjcxYmI2ZmQ5YjFhNTdmYWY3OTA0ZGRmMjdlMy5qcGVnk5UDAB_NA-jNAjKTBc0DFM0BvJUH2TIvcHVsc2Ntcy9NREFfLzE0MGIxY2ZlN2YwYWM1MmVkYzAxMGQ3MDk3OGU4NGJlLnBuZwDCAA');
+  background-image: url(${({ urlToImage }) => urlToImage});
   background-position: center;
   background-size: cover;
   height: 200px;
@@ -46,21 +49,19 @@ class Card extends Component {
 
   render() {
     const { redirect } = this.state;
+    const { title, url, urlToImage, content } = this.props;
 
     if (redirect) {
-      // return <Redirect to="asd" />;
+      return <Redirect to={routes.detailsPage} />;
     }
 
     return (
       <Wrapper onClick={this.handleClick}>
-        <StyledImage>
+        <StyledImage urlToImage={urlToImage}>
           <PieChart />
-          <StyledHeading>Zbiorowy pozew przeciw szpitalowi. Zakażeni pacjenci zmarli</StyledHeading>
+          <StyledHeading>{title}</StyledHeading>
         </StyledImage>
-        <StyledParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla ipsum, lacinia a urna
-          et, interdum volutpat ipsum.
-        </StyledParagraph>
+        <StyledParagraph>{content}</StyledParagraph>
       </Wrapper>
     );
   }
