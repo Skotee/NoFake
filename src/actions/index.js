@@ -86,10 +86,12 @@ export function checkRisk(title = '') {
       'election',
       'trump',
       'final',
+      'to',
+      'and',
+      'of',
     ];
     const actualDate = new Date();
     const actualYear = actualDate.getFullYear();
-    const calculateyear = actualYear - items.publishedAt;
 
     if (items != undefined) {
       const modifiedItems = items.map(item => {
@@ -102,10 +104,10 @@ export function checkRisk(title = '') {
         if (item.description == 'null') item.fakeindicator += 10;
         if (
           catchwords.some(function(v) {
-            // return item.description.indexOf(v) >= 0;
+            return item.description && item.description.indexOf(v) >= 0;
           })
         ) {
-          item.fakeindicator += 10; // There's at least one substring - catchywords with high risk of fake news from array in description
+          item.fakeindicator += (Math.floor(Math.random() * 70)+12); // There's at least one substring - catchywords with high risk of fake news from array in description
         }
         if (
           source.some(function(v) {
