@@ -47,7 +47,7 @@ const StyledReference = styled.a`
 const DetailsTemplate = props => {
   const [redirectOrNot, setRedirect] = useState(false);
 
-  console.log('url: ', props.location.item.url);
+  // console.log('url: ', props.location.item.url);
 
   return (
     <>
