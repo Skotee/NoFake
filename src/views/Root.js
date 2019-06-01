@@ -1,30 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
 import MainTemplate from 'templates/MainTemplate';
-import GridTemplate from 'templates/GridTemplate';
-import Card from 'components/molecules/Card';
-// chwilo details template
-import DetailsTemplate from 'templates/DetailsTemplate';
+import Navigation from 'components/organisms/Navigation';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { routes } from 'routes';
+import HighFake from './HighFake';
+import MediumFake from './MediumFake';
+import LowFake from './LowFake';
 
 const Root = () => {
   return (
-    <MainTemplate>
-      {/* </Navigation> */}
-      {/* <GridTemplate>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </GridTemplate> */}
-      <DetailsTemplate />
-    </MainTemplate>
+    <BrowserRouter>
+      <MainTemplate>
+        <>
+          <Navigation />
+          <Switch>
+            <Route exact path={routes.highFake} component={HighFake} />
+            <Route exact path={routes.mediumFake} component={MediumFake} />
+            <Route exact path={routes.lowFake} component={LowFake} />
+          </Switch>
+        </>
+      </MainTemplate>
+    </BrowserRouter>
   );
 };
 

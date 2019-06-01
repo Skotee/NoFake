@@ -3,6 +3,9 @@ export const theme = {
   black: 'hsl(0, 0%, 0%)',
   grey: `hsl(0, 0%, 97%)`,
   red: 'hsl(0, 100%, 50%)',
+  high: '#C82333',
+  medium: '#E0A800',
+  low: '#218838',
   regular: 300,
   bold: 600,
   fontSize: {
