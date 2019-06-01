@@ -76,16 +76,15 @@ const PieChart = ({ big, title, items }) => {
   if (items.length > 0) {
     index = items.findIndex(item => item.title === title);
   }
-  console.log(items[index].fakeindicator);
+  // console.log(items[index].fakeindicator);
 
   const chartNumber = items[index].fakeindicator;
 
   return (
     <>
-      <NumberWrapper
-        big={big}
-        color={chooseBorderColor(chartNumber)}
-      >{`${chartNumber}%`}</NumberWrapper>
+      <NumberWrapper big={big} color={chooseBorderColor(chartNumber)}>
+        {`${Math.round(chartNumber * 100) / 100}%`}
+      </NumberWrapper>
     </>
   );
 };

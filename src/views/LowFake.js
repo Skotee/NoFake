@@ -9,6 +9,7 @@ class LowFake extends Component {
     like: false,
     unlike: false,
     whichArticle: '',
+    render: false,
   };
 
   componentDidMount() {
@@ -16,18 +17,23 @@ class LowFake extends Component {
   }
 
   componentDidUpdate() {
-    const { like, unlike, whichArticle } = this.state;
+    const { like, unlike, whichArticle, render } = this.state;
     // this.props.checkRisk(like, unlike, whichArticle);
-    this.props.addVote(like, unlike, whichArticle);
+    if (render) this.props.addVote(like, unlike, whichArticle, this.turnOffRender.bind(this));
   }
 
   likeArticle = whichArticle => {
-    this.setState({ like: true, unlike: false, whichArticle });
+    this.setState({ like: true, unlike: false, whichArticle, render: true });
   };
 
   unlikeArticle = whichArticle => {
-    this.setState({ unlike: true, like: false, whichArticle });
+    this.setState({ unlike: true, like: false, whichArticle, render: true });
   };
+
+  turnOffRender() {
+    this.setState({ render: false });
+    console.log('ok');
+  }
 
   render() {
     return (
@@ -55,9 +61,10 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   getArticles: fetchArticles,
-  // checkRisk: checkRiskAction,
-  checkRisk: (like, unlike, whichArticle) => checkRiskAction(like, unlike, whichArticle),
-  addVote: (like, unlike, whichArticle) => addVoteAction(like, unlike, whichArticle),
+  checkRisk: checkRiskAction,
+  // checkRisk: (like, unlike, whichArticle) => checkRiskAction(like, unlike, whichArticle),
+  addVote: (like, unlike, whichArticle, turnOffRender) =>
+    addVoteAction(like, unlike, whichArticle, turnOffRender),
 };
 export default connect(
   mapStateToProps,

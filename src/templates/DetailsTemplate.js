@@ -56,7 +56,7 @@ const DetailsTemplate = props => {
         <Wrapper>
           <StyledHeading>{props.location.item.title}</StyledHeading>
           <StyledImage urlToImage={props.location.item.urlToImage}>
-            <PieChart big />
+            <PieChart big title={props.location.item.title} />
           </StyledImage>
 
           <StyledParagraph>{props.location.item.content.slice(0, -14)}</StyledParagraph>

@@ -126,11 +126,12 @@ export function checkRisk(title = '') {
   };
 }
 
-export function addVote(like = false, unlike = false, title = '') {
+export function addVote(like = false, unlike = false, title = '', turnOffRender) {
   return function(dispatch) {
     const items = store.getState().json;
 
-    if (items) {
+    // console.log(like, unlike, title, turnOffRender);
+    if (items.length > 0) {
       const modifiedItems = items.map(item => {
         if (item.title === title) {
           item.fakeindicator = 1;
@@ -143,7 +144,12 @@ export function addVote(like = false, unlike = false, title = '') {
 
       // console.log('stan lalla: ', modifiedItems);
       // console.log('propsy: ', like, unlike, title);
-      dispatch(() => updateArticles(modifiedItems));
+      dispatch(updateArticles(modifiedItems));
+      turnOffRender();
+      // dispatch({
+      //   type: UPDATE_ARTICLES,
+      //   data: modifiedItems,
+      // });
     }
   };
 }

@@ -53,6 +53,7 @@ const StyledIconCircle = styled(FaThumbsUp)`
   margin: 10px 10px 0 10px;
   transform: ${({ rotate }) => rotate && 'rotate(180deg)'};
   transition: 0.2s linear;
+  cursor: pointer;
   &:hover {
     color: ${({ unlike }) => (unlike ? '#D91500' : '#008A4F')};
     transform: scale(1.2, 1.2) ${({ rotate }) => rotate && 'rotate(180deg)'};
