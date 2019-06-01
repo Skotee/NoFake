@@ -42,17 +42,18 @@ class LowFake extends Component {
           this.props.items.map(item => {
             // console.log(item.urlToImage.lenght);
             if (!item.urlToImage || !item.description) return null;
-            return (
-              <Card
-                key={item.title}
-                title={item.title}
-                url={item.url}
-                urlToImage={item.urlToImage}
-                content={item.content}
-                likeArticle={this.likeArticle}
-                unlikeArticle={this.unlikeArticle}
-              />
-            );
+            if (item.fakeindicator <= 33)
+              return (
+                <Card
+                  key={item.title}
+                  title={item.title}
+                  url={item.url}
+                  urlToImage={item.urlToImage}
+                  content={item.content}
+                  likeArticle={this.likeArticle}
+                  unlikeArticle={this.unlikeArticle}
+                />
+              );
           })}
       </GridTemplate>
     );
