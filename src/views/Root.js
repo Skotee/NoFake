@@ -12,14 +12,12 @@ import Navigation from 'components/organisms/Navigation';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { routes } from 'routes';
 import { Redirect } from 'react-router';
-
+import store from '../store/configStore';
 import reducer from '../reducers/articleReducer';
 import HighFake from './HighFake';
 import MediumFake from './MediumFake';
 import LowFake from './LowFake';
 import HomePage from './HomePage';
-
-const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 const Root = () => {
   return (

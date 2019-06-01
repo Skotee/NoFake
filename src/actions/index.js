@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../store/configStore';
 
 export const FETCH_ARTICLES_BEGIN = 'FETCH_ARTICLES_BEGIN';
 export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS';
@@ -47,5 +48,13 @@ export function fetchArticles() {
       .then(json => {
         dispatch(receivedArticles(json));
       });
+  };
+}
+
+export function checkRisk() {
+  return function(dispatch) {
+    const items = store.getState().json;
+
+    console.log('stan lalla: ', items);
   };
 }
