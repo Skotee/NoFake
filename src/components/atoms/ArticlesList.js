@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchArticles } from "actions/index";
 
-let ArticlesList = ({ fetchArticles }) => {
-    console.log(fetchArticles)
+let ArticlesList = ({ getArticles }) => {
+    console.log(getArticles)
     return (<button 
-        onClick={ () =>  fetchArticles() } >
+        onClick={ () =>  getArticles() } >
         Get news
     </button>)
 };
@@ -44,11 +44,10 @@ let ArticlesList = ({ fetchArticles }) => {
 
 // export default connect(mapStateToProps)(ArticlesList);
 
-const mapStateToProps = (state) => ({
-    channel: state.channel
+const mapStateToProps = () => ({
+
 })
 const mapDispatchToProps = {
     getArticles: fetchArticles
 }
-ArticlesList = connect(mapStateToProps, mapDispatchToProps)(ArticlesList)
-export default ArticlesList;
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlesList);

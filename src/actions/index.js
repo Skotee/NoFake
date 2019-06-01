@@ -3,8 +3,8 @@ import axios from "axios";
 export const FETCH_ARTICLES_BEGIN = 'FETCH_ARTICLES_BEGIN';
 export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS';
 export const FETCH_ARTICLES_FAILURE = 'FETCH_ARTICLES_FAILURE';
-export const REQUEST_POSTS = 'REQUEST_POSTS';
-export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+export const REQUEST_ARTICLES = 'REQUEST_ARTICLES';
+export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES';
 
 const API_KEY = '76e4c10dba1e4b2f9510e6b97d1afe09';
 
@@ -27,11 +27,11 @@ export const fetchArticlesFailure = error => ({
 });
 
 export const requestArticles = () => ({
-    type: REQUEST_POSTS,
+    type: REQUEST_ARTICLES,
 });
 
 export const receivedArticles = json => ({
-    type: RECEIVE_POSTS,
+    type: RECEIVE_ARTICLES,
     json: json.articles,
 });
 
@@ -42,7 +42,7 @@ export function fetchArticles() {
             .get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
             .then(
                 response => response.json(),
-                error => console.log('An error occurred.', error),
+                // error => console.log('An error occurred.', error),
             )
             .then((json) => {
                 dispatch(receivedArticles(json));
