@@ -30,6 +30,7 @@ const StyledHeading = styled(Heading)`
   bottom: 0;
   left: 0;
   padding: 5px 10px;
+  line-height: 20px;
   text-shadow: 4px 4px 6px ${({ theme }) => theme.black};
 
   color: ${({ theme }) => theme.grey};
@@ -52,7 +53,14 @@ class Card extends Component {
     const { title, url, urlToImage, content } = this.props;
 
     if (redirect) {
-      return <Redirect to={routes.detailsPage} />;
+      return (
+        <Redirect
+          to={{
+            pathname: routes.detailsPage,
+            item: { title, url, urlToImage, content },
+          }}
+        />
+      );
     }
 
     return (
@@ -61,7 +69,7 @@ class Card extends Component {
           <PieChart />
           <StyledHeading>{title}</StyledHeading>
         </StyledImage>
-        <StyledParagraph>{content}</StyledParagraph>
+        <StyledParagraph>{content && `${content.slice(0, 100)}...`}</StyledParagraph>
       </Wrapper>
     );
   }
