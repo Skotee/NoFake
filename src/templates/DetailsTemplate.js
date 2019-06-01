@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
 import Button from 'components/atoms/Button';
 import PieChart from 'components/molecules/PieChart';
+import { Redirect } from 'react-router';
+import { routes } from 'routes';
 
 const Wrapper = styled.div`
   margin-top: 5vh;
@@ -12,7 +14,7 @@ const Wrapper = styled.div`
 
 const StyledImage = styled.div`
   position: relative;
-  background-image: url('https://ocdn.eu/pulscms-transforms/1/AotktkqTURBXy80Y2FiZjcxYmI2ZmQ5YjFhNTdmYWY3OTA0ZGRmMjdlMy5qcGVnk5UDAB_NA-jNAjKTBc0DFM0BvJUH2TIvcHVsc2Ntcy9NREFfLzE0MGIxY2ZlN2YwYWM1MmVkYzAxMGQ3MDk3OGU4NGJlLnBuZwDCAA');
+  background-image: url(${({ urlToImage }) => urlToImage});
   background-position: center;
   background-size: cover;
   height: 60vh;
@@ -32,24 +34,39 @@ const StyledParagraph = styled(Paragraph)`
   font-size: ${({ theme }) => theme.fontSize.m};
 `;
 
-const DetailsTemplate = () => {
-  return (
-    <Wrapper>
-      <StyledHeading>Zbiorowy pozew przeciw szpitalowi. Zakażeni pacjenci zmarli</StyledHeading>
-      <StyledImage>
-        <PieChart big />
-      </StyledImage>
+const StyledReference = styled.a`
+  display: block;
+  padding: 20px 0;
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: ${({ theme }) => theme.bold};
+  color: ${({ theme }) => theme.black};
+  text-decoration: underline;
+  cursor: pointer;
+`;
 
-      <StyledParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla ipsum, lacinia a urna
-        et, interdum volutpat ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-        nulla ipsum, lacinia a urna et, interdum volutpat ipsum. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Duis nulla ipsum, lacinia a urna et, interdum volutpat ipsum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla ipsum, lacinia a urna
-        et, interdum volutpat ipsum.
-      </StyledParagraph>
-      <Button>Back</Button>
-    </Wrapper>
+const DetailsTemplate = props => {
+  const [redirectOrNot, setRedirect] = useState(false);
+
+  // console.log('url: ', props.location.item.url);
+
+  return (
+    <>
+      {redirectOrNot && <Redirect to={routes.highFake} />}
+      {props.location && (
+        <Wrapper>
+          <StyledHeading>{props.location.item.title}</StyledHeading>
+          <StyledImage urlToImage={props.location.item.urlToImage}>
+            <PieChart big />
+          </StyledImage>
+
+          <StyledParagraph>{props.location.item.content.slice(0, -14)}</StyledParagraph>
+          <StyledReference href={props.location.item.url} target="_blank">
+            Check source
+          </StyledReference>
+          <Button onClick={() => setRedirect(true)}>Back</Button>
+        </Wrapper>
+      )}
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ const Button = styled.button`
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: ${({ theme }) => theme.bold};
+  cursor: pointer;
 `;
 
 export default Button;

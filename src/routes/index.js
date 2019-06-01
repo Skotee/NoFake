@@ -1,5 +1,6 @@
 export const routes = {
-  highFake: '/',
+  home: '/',
+  highFake: '/high',
   mediumFake: '/medium',
   lowFake: '/low',
   detailsPage: `/details`,
