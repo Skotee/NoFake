@@ -44,8 +44,8 @@ export function fetchArticles() {
         .get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
         // .get(`https://newsapi.org/v2/sources?category=science&apiKey=${API_KEY}`)
         .then(
-          response => console.log(response.data),
-          // response => response.data,
+          // response => console.log(response.data),
+          response => response.data,
           // error => console.log('An error occurred.', error),
         )
         .then(json => {
