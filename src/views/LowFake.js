@@ -32,7 +32,6 @@ class LowFake extends Component {
 
   turnOffRender() {
     this.setState({ render: false });
-    console.log('ok');
   }
 
   render() {

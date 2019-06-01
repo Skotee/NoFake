@@ -121,7 +121,7 @@ export function checkRisk(title = '') {
         type: UPDATE_ARTICLES,
         data: modifiedItems,
       });
-      console.log('stan lalla: ', modifiedItems);
+      // console.log('stan lalla: ', modifiedItems);
     }
   };
 }
@@ -134,22 +134,14 @@ export function addVote(like = false, unlike = false, title = '', turnOffRender)
     if (items.length > 0) {
       const modifiedItems = items.map(item => {
         if (item.title === title) {
-          item.fakeindicator = 1;
-          // chwilowo = 1!
           if (like) item.fakeindicator *= 1.2;
           if (unlike) item.fakeindicator /= 1.2;
         }
         return item;
       });
 
-      // console.log('stan lalla: ', modifiedItems);
-      // console.log('propsy: ', like, unlike, title);
       dispatch(updateArticles(modifiedItems));
       turnOffRender();
-      // dispatch({
-      //   type: UPDATE_ARTICLES,
-      //   data: modifiedItems,
-      // });
     }
   };
 }

@@ -10,8 +10,6 @@ class MediumFake extends Component {
   }
 
   render() {
-    console.log(this.props.items);
-
     return (
       <GridTemplate>
         {this.props.items &&
