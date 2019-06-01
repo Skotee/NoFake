@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 // import configStore from '../store/configStore';
@@ -11,20 +11,20 @@ import DetailsTemplate from 'templates/DetailsTemplate';
 import Navigation from 'components/organisms/Navigation';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { routes } from 'routes';
-import ArticlesList from 'components/atoms/ArticlesList';
+
 import reducer from '../reducers/articleReducer';
 import HighFake from './HighFake';
 import MediumFake from './MediumFake';
 import LowFake from './LowFake';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
+
 const Root = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <MainTemplate>
           <>
-            <ArticlesList />
             <Navigation />
             <Switch>
               <Route exact path={routes.detailsPage} component={DetailsTemplate} />
