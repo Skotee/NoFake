@@ -50,13 +50,21 @@ const Navigation = props => {
 
       <StyledLinkList>
         <li>
+<<<<<<< HEAD
           <ButtonIcon as={NavLink} to={routes.highFake} icon={iconChecked} activeclass="active" />
+=======
+          <ButtonIcon as={NavLink} to={routes.lowFake} icon={iconChecked} />
+>>>>>>> rafal-new
         </li>
         <li>
           <ButtonIcon as={NavLink} to={routes.mediumFake} icon={iconWarning} activeclass="active" />
         </li>
         <li>
+<<<<<<< HEAD
           <ButtonIcon as={NavLink} to={routes.lowFake} icon={iconError} activeclass="active" />
+=======
+          <ButtonIcon as={NavLink} to={routes.highFake} icon={iconError} />
+>>>>>>> rafal-new
         </li>
       </StyledLinkList>
     </Wrapper>
