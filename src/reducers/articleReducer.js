@@ -47,13 +47,13 @@ export default function reducer(state = initialState, action) {
                     items: []
             };
 
-        case REQUEST_POSTS:
+        case REQUEST_ARTICLES:
             return {
                 ...state,
                 loading: true
             };
 
-        case RECEIVE_POSTS:
+        case RECEIVE_ARTICLES:
             return {
                 ...state,
                 json: action.json,
