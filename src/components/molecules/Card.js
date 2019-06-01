@@ -5,6 +5,7 @@ import Paragraph from 'components/atoms/Paragraph';
 import PieChart from 'components/molecules/PieChart';
 import { Redirect } from 'react-router-dom';
 import { routes } from 'routes';
+import { FaThumbsUp } from 'react-icons/fa';
 
 const Wrapper = styled.div`
   min-height: 200px;
@@ -41,6 +42,20 @@ const StyledParagraph = styled(Paragraph)`
   padding: 10px;
 `;
 
+const StyledIconCircle = styled(FaThumbsUp)`
+  width: 30px;
+  height: 30px;
+  color: ${({ unlike }) => unlike || 'green'};
+  margin: 10px 10px 0 10px;
+  transform: ${({ rotate }) => rotate && 'rotate(180deg)'};
+  &:hover {
+    color: ${({ unlike }) => (unlike ? 'orange' : 'blue')};
+  }
+`;
+const WrappStyledIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 class Card extends Component {
   state = {
     redirect: false,
@@ -66,6 +81,10 @@ class Card extends Component {
     return (
       <Wrapper onClick={this.handleClick}>
         <StyledImage urlToImage={urlToImage}>
+          <WrappStyledIcon>
+            <StyledIconCircle />
+            <StyledIconCircle unlike="red" rotate />
+          </WrappStyledIcon>
           <PieChart />
           <StyledHeading>{title}</StyledHeading>
         </StyledImage>

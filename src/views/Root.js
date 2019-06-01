@@ -31,9 +31,9 @@ const Root = () => {
             <Switch>
               <Route exact path={routes.home} component={HomePage} />
               <Route exact path={routes.detailsPage} component={DetailsTemplate} />
-              <Route exact path={routes.highFake} component={HighFake} />
-              <Route exact path={routes.mediumFake} component={MediumFake} />
               <Route exact path={routes.lowFake} component={LowFake} />
+              <Route exact path={routes.mediumFake} component={MediumFake} />
+              <Route exact path={routes.highFake} component={HighFake} />
             </Switch>
           </>
         </MainTemplate>
