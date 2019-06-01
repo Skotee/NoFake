@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import store from 'store/configStore';
+import { connect } from 'react-redux';
 
 const NumberWrapper = styled.div`
   position: absolute;
@@ -70,19 +71,14 @@ const chooseBorderColor = number => {
   return color;
 };
 
-const PieChart = ({ big, title }) => {
-  // console.log(store.getState().json);
-  const ourArticle = store.getState().json.filter(item => {
-    if (item.title === title) return item;
-  });
+const PieChart = ({ big, title, items }) => {
+  let index = 0;
+  if (items.length > 0) {
+    index = items.findIndex(item => item.title === title);
+  }
+  console.log(items[index].fakeindicator);
 
-  console.log(ourArticle);
-  // if (ourArticle.fakeindicator === undefined) ourArticle.fakeindicator = 1;
-
-  // const randomNumber = Math.floor(Math.random() * (100 - 0 + 1));
-
-  // console.log(ourArticle.fakeindicator);
-  const chartNumber = ourArticle.fakeindicator;
+  const chartNumber = items[index].fakeindicator;
 
   return (
     <>
@@ -94,4 +90,8 @@ const PieChart = ({ big, title }) => {
   );
 };
 
-export default PieChart;
+const mapStateToProps = state => {
+  const { json } = state;
+  return { items: json };
+};
+export default connect(mapStateToProps)(PieChart);

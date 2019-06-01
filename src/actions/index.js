@@ -102,7 +102,7 @@ export function checkRisk(title = '') {
         if (item.description == 'null') item.fakeindicator += 10;
         if (
           catchwords.some(function(v) {
-            return item.description.indexOf(v) >= 0;
+            // return item.description.indexOf(v) >= 0;
           })
         ) {
           item.fakeindicator += 10; // There's at least one substring - catchywords with high risk of fake news from array in description
@@ -116,7 +116,11 @@ export function checkRisk(title = '') {
         }
         return item;
       });
-      dispatch(() => updateArticles(modifiedItems));
+
+      dispatch({
+        type: UPDATE_ARTICLES,
+        data: modifiedItems,
+      });
       console.log('stan lalla: ', modifiedItems);
     }
   };

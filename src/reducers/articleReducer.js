@@ -62,7 +62,9 @@ export default function reducer(state = initialState, action) {
       };
 
     case UPDATE_ARTICLES:
+      // console.log(action.data);
       return {
+        ...state,
         json: action.data,
       };
     default:
