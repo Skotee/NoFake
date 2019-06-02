@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/Skotee/NoFake/static/js/main.7294d4e8.chunk.js",
+    "main.js.map": "/Skotee/NoFake/static/js/main.7294d4e8.chunk.js.map",
+    "runtime~main.js": "/Skotee/NoFake/static/js/runtime~main.ea4cf0b5.js",
+    "runtime~main.js.map": "/Skotee/NoFake/static/js/runtime~main.ea4cf0b5.js.map",
+    "static/js/2.31de7c87.chunk.js": "/Skotee/NoFake/static/js/2.31de7c87.chunk.js",
+    "static/js/2.31de7c87.chunk.js.map": "/Skotee/NoFake/static/js/2.31de7c87.chunk.js.map",
+    "index.html": "/Skotee/NoFake/index.html",
+    "precache-manifest.f9a6175a6c16ff87f99dfd281d376f03.js": "/Skotee/NoFake/precache-manifest.f9a6175a6c16ff87f99dfd281d376f03.js",
+    "service-worker.js": "/Skotee/NoFake/service-worker.js"
+  }
+}
