@@ -1,7 +1,13 @@
 export const theme = {
   white: 'hsl(0, 100%, 100%)',
   black: 'hsl(0, 0%, 0%)',
+  grey: `hsl(0, 0%, 97%)`,
   red: 'hsl(0, 100%, 50%)',
+  high: '#e74c3c',
+  medium: '#E0A800',
+  low: '#2ecc71',
+  details: '#ddd',
+  home: '#ddd',
   regular: 300,
   bold: 600,
   fontSize: {

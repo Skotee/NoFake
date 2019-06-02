@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
-  body{
+  body {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6rem;
   }
