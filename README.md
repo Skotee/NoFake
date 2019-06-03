@@ -1,15 +1,14 @@
-![NoFake](https://i.ibb.co/MZnF1vD/62021316-373967196565167-2874147494067961856-n.png?v=3&s=100)]
+![NoFake](https://i.ibb.co/MZnF1vD/62021316-373967196565167-2874147494067961856-n.png?v=3&s=100)
 
 
 # NoFake
 
 > Fake news filter website, made during hackathon on Silesian University of Technology "Code with Accenture - Hackathon AEI"
 
-
 ![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square) ![Dependency Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)
 ![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)
 
-![NoFake](https://i.ibb.co/nm3SV7w/hackathon12.png?v=3&s=100)]
+![NoFake](https://i.ibb.co/nm3SV7w/hackathon12.png?v=3&s=100)
 ---
 
 ## Table of Contents
@@ -87,7 +86,7 @@ Based on Avast article *"How to identify fake news and prevent it from spreading
 ## Team
 
  ![Radosław Wojaczek](https://avatars1.githubusercontent.com/u/16490105?s=60&v=4?s=50&v=4?v=3&s=200)(https://github.com/Skotee)
- ![Filip Lipiński(https://avatars1.githubusercontent.com/u/42073855?s=60&v=4?v=3&s=200) (https://github.com/filiplipinski)  ![Rafał Labisz](https://avatars0.githubusercontent.com/u/47895559?s=60&v=4?v=3&s=50) https://github.com/rafallabisz
+ ![Filip Lipiński](https://avatars1.githubusercontent.com/u/42073855?s=60&v=4?v=3&s=200)(https://github.com/filiplipinski)  ![Rafał Labisz](https://avatars0.githubusercontent.com/u/47895559?s=60&v=4?v=3&s=50) https://github.com/rafallabisz
 
 ---
 
@@ -96,4 +95,4 @@ Based on Avast article *"How to identify fake news and prevent it from spreading
 `https://www.facebook.com/events/412620176258963/`
 
     
-![NoFake](https://i.ibb.co/bX3RFjN/hackathon1.png?v=3&s=100)]
+![NoFake](https://i.ibb.co/bX3RFjN/hackathon1.png?v=3&s=60)
