@@ -1,11 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-// import { render } from 'react-dom';
-// import configStore from '../store/configStore';
 import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 import { applyMiddleware, createStore } from 'redux';
-// import styled from 'styled-components';
 import MainTemplate from 'templates/MainTemplate';
 import DetailsTemplate from 'templates/DetailsTemplate';
 import Navigation from 'components/organisms/Navigation';
@@ -22,7 +19,7 @@ import HomePage from './HomePage';
 const Root = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <MainTemplate>
           <>
             <Navigation />

@@ -48,11 +48,9 @@ export function fetchArticles() {
     return (
       axios
         .get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
-        // .get(`https://newsapi.org/v2/sources?itemegory=sport&apiKey=${API_KEY}`)
         .then(
-          // response => console.log(response.data),
           response => response.data,
-          // error => console.log('An error occurred.', error),
+          error => console.log('An error occurred.', error),
         )
         .then(json => {
           dispatch(receivedArticles(json));
@@ -95,7 +93,7 @@ export function checkRisk(title = '') {
 
     if (items != undefined) {
       const modifiedItems = items.map(item => {
-        item.fakeindicator = 1; // 1 to prawda, 100 to fałsz
+        item.fakeindicator = 1;
         if (item.title === title) {
           item.fakeindicator += 10;
         }
@@ -123,7 +121,7 @@ export function checkRisk(title = '') {
         type: UPDATE_ARTICLES,
         data: modifiedItems,
       });
-      console.log('stan lalla: ', modifiedItems);
+      // console.log('stan: ', modifiedItems);
     }
   };
 }
@@ -132,7 +130,7 @@ export function addVote(like = false, unlike = false, title = '', turnOffRender)
   return function(dispatch) {
     const items = store.getState().json;
 
-    // console.log(like, unlike, title, turnOffRender);
+
     if (items.length > 0) {
       const modifiedItems = items.map(item => {
         if (item.title === title) {
